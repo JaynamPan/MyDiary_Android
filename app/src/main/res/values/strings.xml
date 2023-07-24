@@ -1,0 +1,151 @@
+<resources>
+    <string name="app_name">WeiDiary</string>
+    <string name="init_message">Welcome to beauty Weiwei\'s diary</string>
+    <!-- Profile -->
+    <string name="profile_username_taki">Taki</string>
+    <string name="profile_username_mitsuha">Mitsuha</string>
+    <string name="toast_change_theme">Theme is changing…</string>
+    <string name="your_name_is">Your name is</string>
+    <!-- Topic detail -->
+    <string name="topic_detail_name">Topic name</string>
+    <string name="topic_detail_text_color">Text color</string>
+    <string name="topic_dialog_delete_title">Delete</string>
+    <string name="topic_dialog_delete_content">Do you want to delete %1$s?</string>
+    <string name="toast_topic_empty">Topic name is empty</string>
+    <string name="topic_topic_bg_fail">To change background of topic fail…</string>
+    <string name="topic_detail_current_bg">Topic background</string>
+    <string name="topic_detail_default_bg">default background</string>
+    <!-- Dialog  -->
+    <string name="dialog_button_ok">Ok</string>
+    <string name="dialog_button_call">Call</string>
+    <string name="dialog_button_cancel">Cancel</string>
+    <string name="dialog_button_delete">Delete</string>
+    <string name="process_dialog_loading">Loading…</string>
+    <string name="process_dialog_saving">Saving…</string>
+    <!-- Diary Activity -->
+    <string name="segmented_entries">Entries</string>
+    <string name="segmented_calendar">Calendar</string>
+    <string name="segmented_Diary">Diary</string>
+    <string name="diary_back_message">There are a diary in editing, do you want to leave it?</string>
+    <!-- Entries  -->
+    <plurals name="entries_count">
+        <item quantity="one">%1$d Entry</item>
+        <item quantity="other">%1$d Entries</item>
+    </plurals>
+    <string name="entries_edit_view">Click diary for editing</string>
+    <string name="entries_edit_dialog_delete_content">Do you really want to delete this diary?</string>
+    <string name="entries_summary_photo">**photo**</string>
+    <string name="toast_diary_long_click_edit">Editing…</string>
+    <!-- Diary  -->
+    <string name="diary_no_location">No Location</string>
+    <string name="diary_location_permission_title">Permission</string>
+    <string name="diary_location_permission_content">Need permission to get location name</string>
+    <string name="diary_photo_permission_content">Need permission to add photo</string>
+    <string name="diary_title_hint">Diary title</string>
+    <string name="diary_content_hint">Write your diary here</string>
+    <string name="diary_clear_message">do you want to delete it?</string>
+    <string name="diary_no_title">No Title</string>
+    <string name="toast_diary_empty">Diary is empty</string>
+    <string name="toast_not_image">The file is not a image</string>
+    <string name="toast_photo_path_error">Photo path has some problem</string>
+    <string name="toast_photo_intent_error">To get image resource of device fail</string>
+    <string name="toast_max_photo">Max selected photo is %1$d</string>
+    <string name="toast_space_insufficient">Free space insufficient</string>
+    <string name="toast_diary_update_successful">Updating diary successful</string>
+    <string name="toast_diary_update_fail">Updating diary fail</string>
+    <string name="toast_diary_insert_successful">Diary was inserted successfully</string>
+    <string name="toast_diary_insert_fail">Diary was inserted unsuccessfully…</string>
+    <!-- Diary Viewer edit -->
+    <string name="toast_diary_copy_to_edit_fail">Reading photo data fail…</string>
+    <!-- Memo -->
+    <string name="memo_item_add">Add</string>
+    <string name="toast_memo_empty">Memo is empty!</string>
+    <!-- Contacts -->
+    <string name="contacts_call_phone_permission_title">Permission</string>
+    <string name="contacts_call_phone_permission_content">Need permission to call phone</string>
+    <string name="contacts_call_phone_no_call_function">Your device can\'t call phone</string>
+    <string name="contacts_detail_edt_name">Name</string>
+    <string name="contacts_detail_edt_phone_number">Phone</string>
+    <string name="toast_contacts_empty">Contacts is empty!</string>
+    <!-- About -->
+    <string name="about_title">About</string>
+    <!-- Setting -->
+    <string name="setting_theme_title">Theme</string>
+    <string name="setting_theme_hint">Pick your theme</string>
+    <string name="setting_theme_main_color">Main color</string>
+    <string name="setting_theme_sec_color">Sec. color</string>
+    <string name="setting_theme_default_profile_bg">default\n background</string>
+    <string name="setting_theme_default_color">default color</string>
+    <string name="setting_theme_apply">Apply</string>
+    <string name="setting_theme_profile_bg">Profile Background</string>
+    <string name="setting_language_title">Language</string>
+    <string name="setting_language_hint">Pick your language</string>
+    <string name="toast_save_profile_banner_fail">To save banner of profile fail…</string>
+    <string name="toast_crop_profile_banner_fail">To crop banner of profile fail…</string>
+    <string name="toast_save_profile_picture_fail">To save profile picture fail…</string>
+    <string name="toast_crop_profile_picture_fail">To crop profile picture fail…</string>
+    <string name="setting_system_title">System</string>
+    <string name="setting_system_fix_dir_hint">If your photo is gone after updating, click it to fix</string>
+    <string name="setting_system_fix_dir_button">Fix photo</string>
+    <string name="toast_setting_successful">Successful</string>
+    <string name="toast_setting_wont_fix">You don\'t need to fix anything</string>
+    <string name="toast_setting_fail">Fail</string>
+    <!-- Google service API -->
+    <string name="toast_google_service_not_work">Your Google Services doesn\'t work or needs to update</string>
+    <!-- Diary Geocoder & Location   -->
+    <string name="toast_location_not_open">Your location is disable</string>
+    <string name="toast_geocoder_fail">Can\'t transform address</string>
+    <string name="toast_location_timeout">get location timeout</string>
+    <!-- Password -->
+    <string name="password_create_pwd">Set passcode to create lock</string>
+    <string name="password_create_pwd_with_verify">confirm passcode</string>
+    <string name="password_verify_pwd">Enter passcode</string>
+    <string name="password_remove_pwd">Enter passcode to remove lock</string>
+    <string name="password_create_pwd_with_verify_msg">Passcode does not match</string>
+    <string name="password_verify_pwd_msg">Passcode does not match</string>
+    <string name="password_remove_pwd_msg">Old passcode does not match</string>
+    <!-- Back event -->
+    <string name="main_activity_exit_app">Press again to exit</string>
+    <!-- Backup overwrite string -->
+    <string name="nnf_select_something_first">Please select something first</string>
+    <string name="nnf_permission_external_write_denied">Need permission to access file system</string>
+    <!-- Backup -->
+    <string name="backup_title">Backup</string>
+    <string name="backup_export_title">Export</string>
+    <string name="backup_export_hint">Export all data(Not including profile)</string>
+    <string name="backup_export_path_hint">Click to select exporting folder</string>
+    <string name="backup_export_button">export</string>
+    <string name="backup_export_share_title">Share with</string>
+    <string name="backup_export_can_not_write">Can\'t write into this path, please select again</string>
+    <string name="toast_export_successful">%1$s\nexport successful</string>
+    <string name="toast_export_fail">export fail…please checking permission or storage</string>
+    <string name="backup_import_title">Import</string>
+    <string name="backup_import_hint">Import existing file((Not including profile)</string>
+    <string name="backup_import_path_hint">Click to select importing file</string>
+    <string name="backup_import_button">import</string>
+    <string name="backup_import_can_not_read">Can\'t read this file, please select again</string>
+    <string name="toast_import_successful">import successful</string>
+    <string name="toast_import_fail">import fail…please checking file</string>
+    <!-- OOBE -->
+    <string name="oobe_next_button">Next</string>
+    <string name="oobe_main_your_name_title">Your name</string>
+    <string name="oobe_main_your_name_content">You can set your personal information.</string>
+    <string name="oobe_main_topic_list_title">Topic list</string>
+    <string name="oobe_main_topic_list_content">Your personal diary, memo or contacts!\nSwipe it to edit or delete.\n(The default Japanese data is from movie, you can delete it)</string>
+    <string name="oobe_main_search_title">Search</string>
+    <string name="oobe_main_search_content">You can search some topic.</string>
+    <string name="oobe_main_adv_setting_title">Advanced setting.</string>
+    <string name="oobe_main_adv_setting_content">Open the advanced settings.\nIncluding create topic, app setting, passcode, backup and about.</string>
+    <string name="oobe_main_mydiary_title">MyDiary</string>
+    <string name="oobe_main_mydiary_content">Either you\'ve seen the movie or not,\nI hope you\'ll enjoy this app.\nWrite the story of your name now!</string>
+    <!-- Photo viewer -->
+    <string name="photo_viewer_topic_fail">get diary fail</string>
+    <string name="photo_viewer_photo_path_fail">get photo path fail</string>
+    <string name="photo_viewer_no_images">No images</string>
+    <!--Release Note-->
+    <string name="release_note_title">Release note</string>
+    <string name="release_note">Version 1.0
+        take notes, record life
+    </string>
+    <string name="release_note_close_remind">Don\'t show again</string>
+</resources>
