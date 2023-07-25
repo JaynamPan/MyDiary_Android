@@ -1,4 +1,4 @@
 # MyDiary_Android
-This repo is a recreation type of DaxiaK's MyDiary
-This repo is still unfinished as many functions have not been implemented 
+This repo is a recreation type of DaxiaK's MyDiary  
+This repo is still unfinished as many functions have not been implemented  
 This repo requires minSDK=26 and is tested on a physical phone whose API is 29
