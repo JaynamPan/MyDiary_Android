@@ -12,7 +12,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 
 public class PhotoDetailPagerAdapter extends FragmentPagerAdapter {
-    private SparseArray<Fragment> registeredFragments = new SparseArray<Fragment>();
+    private SparseArray<Fragment> registeredFragments = new SparseArray<>();
     private ArrayList<Uri> diaryPhotoFileList;
 
     public PhotoDetailPagerAdapter(FragmentManager fm, ArrayList<Uri> diaryPhotoFileList) {

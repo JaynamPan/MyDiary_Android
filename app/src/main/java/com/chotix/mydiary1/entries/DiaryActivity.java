@@ -1,9 +1,14 @@
 package com.chotix.mydiary1.entries;
 
+import android.content.Context;
+import android.content.res.Configuration;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 //import android.support.v4.app.FragmentPagerAdapter;
+import android.util.Log;
 import android.util.SparseArray;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -23,12 +28,14 @@ import com.chotix.mydiary1.entries.calendar.CalendarFragment;
 import com.chotix.mydiary1.entries.diary.DiaryFragment;
 import com.chotix.mydiary1.entries.entry.EntriesEntity;
 import com.chotix.mydiary1.entries.entry.EntriesFragment;
+import com.chotix.mydiary1.shared.MyDiaryApplication;
 import com.chotix.mydiary1.shared.ThemeManager;
 import com.chotix.mydiary1.shared.statusbar.ChinaPhoneHelper;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import info.hoang8f.android.segmented.SegmentedGroup;
 
@@ -72,6 +79,8 @@ public class DiaryActivity extends FragmentActivity implements RadioGroup.OnChec
         setContentView(R.layout.activity_diary);
         //For set status bar
         ChinaPhoneHelper.setStatusBar(this, true);
+        setStatusBarBgColor();
+
         topicId = getIntent().getLongExtra("topicId", -1);
         hasEntries = getIntent().getBooleanExtra("has_entries", true);
         if (topicId == -1) {
@@ -151,7 +160,7 @@ public class DiaryActivity extends FragmentActivity implements RadioGroup.OnChec
      * Init Viewpager
      */
     private void initViewPager() {
-        ViewPager_diary_content = (ViewPager) findViewById(R.id.ViewPager_diary_content);
+        ViewPager_diary_content = findViewById(R.id.ViewPager_diary_content);
         //Make viewpager load one fragment every time.
         ViewPager_diary_content.setOffscreenPageLimit(2);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
@@ -236,7 +245,7 @@ public class DiaryActivity extends FragmentActivity implements RadioGroup.OnChec
 
     private class ScreenSlidePagerAdapter extends FragmentPagerAdapter {
 
-        private SparseArray<Fragment> registeredFragments = new SparseArray<Fragment>();
+        private SparseArray<Fragment> registeredFragments = new SparseArray<>();
 
         public ScreenSlidePagerAdapter(FragmentManager fm) {
             super(fm);
@@ -281,5 +290,23 @@ public class DiaryActivity extends FragmentActivity implements RadioGroup.OnChec
             return registeredFragments.get(position);
         }
 
+    }
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(updateBaseContextLocale(base));
+
+    }
+
+    private Context updateBaseContextLocale(Context context) {
+        Locale locale = MyDiaryApplication.mLocale;
+        Log.e("Mytest", "init mLocale:" + locale);
+        Locale.setDefault(locale);
+        Configuration configuration = context.getResources().getConfiguration();
+        configuration.setLocale(locale);
+        return context.createConfigurationContext(configuration);
+    }
+    private void setStatusBarBgColor(){
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        getWindow().setStatusBarColor(Color.WHITE);
     }
 }

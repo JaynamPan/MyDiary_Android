@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,6 +31,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.TopicV
         this.topicId = topicId;
         this.callback = callback;
     }
+    @NonNull
     @Override
     public TopicViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -42,7 +44,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.TopicV
         return contactsNamesList.size();
     }
     @Override
-    public void onBindViewHolder(TopicViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull TopicViewHolder holder, final int position) {
         if (showHeader(position)) {
             holder.getHeader().setVisibility(View.VISIBLE);
             holder.getHeader().setText(contactsNamesList.get(position).getSortLetters());

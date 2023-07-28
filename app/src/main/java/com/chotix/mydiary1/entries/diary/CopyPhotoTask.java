@@ -1,17 +1,24 @@
 package com.chotix.mydiary1.entries.diary;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.chotix.mydiary1.R;
 import com.chotix.mydiary1.shared.FileManager;
+import com.chotix.mydiary1.shared.PermissionHelper;
 import com.chotix.mydiary1.shared.photo.BitmapHelper;
 import com.chotix.mydiary1.shared.photo.ExifUtil;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -94,18 +101,27 @@ public class CopyPhotoTask extends AsyncTask<Void,Void,String> {
 
     @Override
     protected void onPostExecute(String srcFileName) {
+        Log.e("Mytest","copyphoto onpost invoked");
         super.onPostExecute(srcFileName);
         progressDialog.dismiss();
+        Log.e("Mytest","copyphoto onpost srcFileName: "+srcFileName);
         callBack.onCopyCompiled(srcFileName);
+        Log.e("Mytest","copyphoto onpost callback invoked");
     }
-    private String savePhotoToTemp(Bitmap bitmap) throws Exception {
-
+    private String savePhotoToTemp(Bitmap bitmap) {
+        //test start
+        Log.e("Mytest","copyphoto savephoto input bitmap size: "+bitmap.getByteCount());
+        //test end
         FileOutputStream out = null;
         String fileName = FileManager.createRandomFileName();
         try {
             out = new FileOutputStream(fileManager.getDirAbsolutePath() + "/" + fileName);
+            Log.e("Mytest","copyphoto out path: "+fileManager.getDirAbsolutePath() + "/" + fileName);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out); // bmp is your Bitmap instance
-        } finally {
+        }catch (Exception e){
+            Log.e("Mytest","copyphoto savephoto bitmap compress failed");
+            e.printStackTrace();
+        }finally {
             try {
                 if (out != null) {
                     out.close();
@@ -114,6 +130,16 @@ public class CopyPhotoTask extends AsyncTask<Void,Void,String> {
                 e.printStackTrace();
             }
         }
+        //test
+        Log.e("Mytest","copyphototask savephotototemp filename: "+fileName);
+        if (fileName!=null){
+            File file=new File(fileManager.getDirAbsolutePath() + "/" + fileName);
+            long fileSize= file.length();
+            Log.e("Mytest","copyphototask savephoto filelength: "+fileSize);
+        }else {
+            Log.e("Mytest","copyphototask savephoto file is null");
+        }
+        //test
         return fileName;
     }
 }

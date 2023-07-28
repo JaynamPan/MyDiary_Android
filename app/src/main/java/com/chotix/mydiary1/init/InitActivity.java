@@ -1,8 +1,11 @@
 package com.chotix.mydiary1.init;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +14,8 @@ import com.chotix.mydiary1.MainActivity;
 import com.chotix.mydiary1.R;
 import com.chotix.mydiary1.security.PasswordActivity;
 import com.chotix.mydiary1.shared.MyDiaryApplication;
+
+import java.util.Locale;
 
 public class InitActivity extends AppCompatActivity implements InitTask.InitCallBack {
     private int initTime = 2500; // 2.5S
@@ -56,5 +61,20 @@ public class InitActivity extends AppCompatActivity implements InitTask.InitCall
             finish();
             InitActivity.this.startActivity(goMainPageIntent);
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(updateBaseContextLocale(base));
+
+    }
+
+    private Context updateBaseContextLocale(Context context) {
+        Locale locale = MyDiaryApplication.mLocale;
+        Log.e("Mytest", "init mLocale:" + locale);
+        Locale.setDefault(locale);
+        Configuration configuration = context.getResources().getConfiguration();
+        configuration.setLocale(locale);
+        return context.createConfigurationContext(configuration);
     }
 }

@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
+import android.util.Log;
 
 import com.chotix.mydiary1.R;
 import com.chotix.mydiary1.main.topic.ITopic;
@@ -86,12 +87,15 @@ public class ThemeManager {
 
     public Drawable getProfileBgDrawable(Context context) {
         Drawable bgDrawable;
+        Log.e("Mytest","getProfileBgDrawable currentTheme:"+currentTheme);
         switch (currentTheme) {
             case TAKI:
                 bgDrawable = ViewTools.getDrawable(context, R.drawable.profile_theme_bg_taki);
+                Log.e("Mytest","getProfileBgDrawable currentTheme:"+currentTheme+"TAKI");
                 break;
             case MITSUHA:
                 bgDrawable = ViewTools.getDrawable(context, R.drawable.profile_theme_bg_mitsuha);
+                Log.e("Mytest","getProfileBgDrawable currentTheme:"+currentTheme+"Mitsuha");
                 break;
             default:
 
@@ -103,6 +107,7 @@ public class ThemeManager {
                 } else {
                     bgDrawable = new ColorDrawable(getThemeMainColor(context));
                 }
+                Log.e("Mytest","getProfileBgDrawable currentTheme:"+currentTheme+"default");
                 break;
         }
         return bgDrawable;
@@ -381,10 +386,8 @@ public class ThemeManager {
         String userName;
         switch (currentTheme) {
             case TAKI:
-                userName = context.getString(R.string.profile_username_taki);
-                break;
             case MITSUHA:
-                userName = context.getString(R.string.profile_username_mitsuha);
+                userName = context.getString(R.string.profile_username_default);
                 break;
             default:
                 userName = context.getString(R.string.your_name_is);

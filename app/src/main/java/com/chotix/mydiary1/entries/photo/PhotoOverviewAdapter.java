@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,6 +42,7 @@ public class PhotoOverviewAdapter extends RecyclerView.Adapter<PhotoOverviewAdap
         resizePhotoWidth = ScreenHelper.getScreenWidth(context) / 3;
         resizePhotoHeight = ScreenHelper.dpToPixel(mContext.getResources(), 150);
     }
+    @NonNull
     @Override
     public SimpleViewHolder onCreateViewHolder(
             ViewGroup parent,

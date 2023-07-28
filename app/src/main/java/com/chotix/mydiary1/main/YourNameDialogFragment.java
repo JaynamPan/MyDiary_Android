@@ -4,12 +4,17 @@ import static android.app.Activity.RESULT_OK;
 
 import static com.chotix.mydiary1.shared.PermissionHelper.REQUEST_WRITE_ES_PERMISSION;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +24,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 
+import com.chotix.mydiary1.MainActivity;
 import com.chotix.mydiary1.R;
 import com.chotix.mydiary1.shared.FileManager;
 import com.chotix.mydiary1.shared.PermissionHelper;
@@ -34,8 +44,11 @@ import com.chotix.mydiary1.shared.gui.MyDiaryButton;
 import com.yalantis.ucrop.UCrop;
 
 import java.io.File;
+import java.util.Map;
 
-public class YourNameDialogFragment extends DialogFragment implements View.OnClickListener {
+public class YourNameDialogFragment extends DialogFragment implements View.OnClickListener{
+
+
     public interface YourNameCallback {
         void updateName();
     }
@@ -49,7 +62,8 @@ public class YourNameDialogFragment extends DialogFragment implements View.OnCli
      * File
      */
     private FileManager tempFileManager;
-    private final static int SELECT_PROFILE_PICTURE_BG = 0;
+    private final static int SELECT_PROFILE_PICTURE_BG = 333;
+    private final static int PICK_IMAGE_REQUEST = 444;
     /**
      * Profile picture
      */
@@ -63,6 +77,8 @@ public class YourNameDialogFragment extends DialogFragment implements View.OnCli
     private ImageView IV_your_name_profile_picture, IV_your_name_profile_picture_cancel;
     private EditText EDT_your_name_name;
     private MyDiaryButton But_your_name_ok, But_your_name_cancel;
+
+
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -82,7 +98,7 @@ public class YourNameDialogFragment extends DialogFragment implements View.OnCli
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        Dialog dialog= super.onCreateDialog(savedInstanceState);
+        Dialog dialog = super.onCreateDialog(savedInstanceState);
         // request a window without the title
         dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         return dialog;
@@ -132,12 +148,13 @@ public class YourNameDialogFragment extends DialogFragment implements View.OnCli
         if (requestCode == SELECT_PROFILE_PICTURE_BG) {
             if (resultCode == RESULT_OK) {
                 if (data != null && data.getData() != null) {
-
+                    Log.e("Mytest", "yournamedialogfragment onactivityresult data not null");
                     //Create fileManager for get temp folder
                     tempFileManager = new FileManager(getActivity(), FileManager.TEMP_DIR);
                     tempFileManager.clearDir();
                     //Compute the bg size
                     int photoSize = ScreenHelper.dpToPixel(getResources(), 50);
+                    Log.e("Mytest", "yournamedialogfragment onactivityresult photosize" + photoSize);
                     UCrop.Options options = new UCrop.Options();
                     options.setToolbarColor(ThemeManager.getInstance().getThemeMainColor(getActivity()));
                     options.setStatusBarColor(ThemeManager.getInstance().getThemeDarkColor(getActivity()));
@@ -165,7 +182,10 @@ public class YourNameDialogFragment extends DialogFragment implements View.OnCli
                 }
             }
         }
+
+
     }
+
     private void loadProfilePicture() {
         IV_your_name_profile_picture.setImageDrawable(ThemeManager.getInstance().getProfilePictureDrawable(getActivity()));
     }
@@ -201,15 +221,17 @@ public class YourNameDialogFragment extends DialogFragment implements View.OnCli
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.IV_your_name_profile_picture:
-                if (PermissionHelper.checkPermission(this.getActivity(), REQUEST_WRITE_ES_PERMISSION)) {
-                    FileManager.startBrowseImageFile(this.getActivity(), SELECT_PROFILE_PICTURE_BG);
-                }
+                Log.e("Mytest", "yournamedialogfragment IV_your_name_profile_picture clicked");
+                requestReadAndWritePermissions();
                 break;
             case R.id.IV_your_name_profile_picture_cancel:
+                Log.e("Mytest", "yournamedialogfragment IV_your_name_profile_picture_cancel clicked");
                 isAddNewProfilePicture = true;
                 profilePictureFileName = "";
                 IV_your_name_profile_picture.setImageDrawable(
                         ViewTools.getDrawable(getActivity(), R.drawable.ic_person_picture_default));
+                Toast.makeText(this.getContext(), "Pic set to default", Toast.LENGTH_SHORT).show();
+                Log.e("Mytest", "yournamedialogfragment set profile image to default");
                 break;
             case R.id.But_your_name_ok:
                 saveYourName();
@@ -221,4 +243,86 @@ public class YourNameDialogFragment extends DialogFragment implements View.OnCli
                 break;
         }
     }
+
+    private int  REQUEST_READ_AND_WRITE_CODE=943;
+    private void checkAndRequestReadAndWritePermission(){
+        if (ContextCompat.checkSelfPermission(this.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED
+        ||ContextCompat.checkSelfPermission(this.getContext(),Manifest.permission.READ_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this.getActivity(),new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE},REQUEST_READ_AND_WRITE_CODE);
+        }
+    }
+    private void checkReadAndWritePermissions(){
+        if (ContextCompat.checkSelfPermission(this.getContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED
+                ||ContextCompat.checkSelfPermission(this.getContext(),Manifest.permission.READ_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED){
+            Toast.makeText(this.getContext(), "Storage permissions are required", Toast.LENGTH_SHORT).show();
+            Log.e("Mytest","storage permissions not granted");
+        }else{
+            Log.e("Mytest","storage permissions have granted");
+        }
+    }
+    public void getImage() {
+        try {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            mGetContentLauncher.launch(intent);
+            Log.e("Mytest", "yourname getimage started ");
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.e("Mytest", "yourname getimage failed");
+        }
+
+    }
+
+    private ActivityResultLauncher<Intent> mGetContentLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+        Log.e("Mytest", "yourname registerforresult got result");
+        if (result.getResultCode() == Activity.RESULT_OK) {
+            Log.e("Mytest", "yourname registerforresult code ok");
+            Intent data = result.getData();
+            Uri selectedImgUri = data.getData();
+            Log.e("Mytest", "yourname got uri:" + selectedImgUri.toString());
+
+            if (data != null && selectedImgUri != null) {
+                Log.e("Mytest", "yourname selectedImgUri data not null");
+                //Create fileManager for get temp folder
+                tempFileManager = new FileManager(getActivity(), FileManager.TEMP_DIR);
+                tempFileManager.clearDir();
+                //Compute the bg size
+                int photoSize = ScreenHelper.dpToPixel(getResources(), 50);
+                Log.e("Mytest", "yournamedialogfragment  photosize" + photoSize);
+                UCrop.Options options = new UCrop.Options();
+                options.setToolbarColor(ThemeManager.getInstance().getThemeMainColor(getActivity()));
+                options.setStatusBarColor(ThemeManager.getInstance().getThemeDarkColor(getActivity()));
+                UCrop.of(data.getData(), Uri.fromFile(
+                                new File(tempFileManager.getDir() + "/" + FileManager.createRandomFileName())))
+                        .withMaxResultSize(photoSize, photoSize)
+                        .withAspectRatio(1, 1)
+                        .withOptions(options)
+                        .start(getActivity(), this);
+            } else {
+                Toast.makeText(getActivity(), getString(R.string.toast_photo_intent_error), Toast.LENGTH_LONG).show();
+            }
+
+        }
+    });
+    private ActivityResultLauncher<String[]> requestPermissionLauncher=registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(),permissions->{
+        int grantedNum=0;
+        for (Map.Entry<String,Boolean>entry: permissions.entrySet()){
+            Boolean isGranted=entry.getValue();
+            if (isGranted){
+                grantedNum+=1;
+            }
+        }
+        if (grantedNum==2){
+            Log.e("Mytest","permissionLauncher permissions has granted");
+            getImage();
+        }else{
+            Log.e("Mytest","permissionLauncher permissions not granted");
+        }
+    });
+    private void requestReadAndWritePermissions(){
+        String[]permissions=new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        requestPermissionLauncher.launch(permissions);
+    }
+
 }

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <array name="months_full_name">
+        <item>জানুয়ারি</item>
+        <item>ফেব্রুয়ারি</item>
+        <item>মার্চ</item>
+        <item>এপ্রিল</item>
+        <item>মে</item>
+        <item>জুন</item>
+        <item>জুলাই</item>
+        <item>আগস্ট</item>
+        <item>সেপ্টেম্বর</item>
+        <item>অক্টোবর</item>
+        <item>নভেম্বর</item>
+        <item>ডিসেম্বর</item>
+    </array>
+
+    <array name="days_simple_name">
+        <item>Sun.</item>
+        <item>Mon.</item>
+        <item>Tue.</item>
+        <item>Wed.</item>
+        <item>Thu.</item>
+        <item>Fri.</item>
+        <item>Sat.</item>
+    </array>
+
+    <array name="days_full_name">
+        <item>রবিবার</item>
+        <item>সোমবার</item>
+        <item>মঙ্গলবার</item>
+        <item>বুধবার</item>
+        <item>বৃহস্পতিবার</item>
+        <item>শুক্রবার</item>
+        <item>শনিবার</item>
+    </array>
+
+    <array name="topic_type">
+        <item>পরিচিতি</item>
+        <item>ডায়েরি</item>
+        <item>মেমো</item>
+    </array>
+
+    <array name="theme_list">
+        <item>নীল</item>
+        <item>গোলাপী</item>
+        <item>কাস্টম</item>
+    </array>
+
+    <array name="weather_list">
+        <item>রোদ</item>
+        <item>মেঘলা</item>
+        <item>বাতাস</item>
+        <item>বৃষ্টি</item>
+        <item>তুষারময়</item>
+        <item>কুয়াশাচ্ছন্ন</item>
+    </array>
+
+    <array name="language_list">
+        <item>System</item>
+        <item>English</item>
+        <item>简体中文</item>
+        <item>বাঙ্গালি</item>
+    </array>
+    <array name="lan_list">
+        <item>System</item>
+        <item>English(100%)</item>
+        <item>日本語(80%)</item>
+        <item>繁體中文(100%)</item>
+        <item>简体中文(100%)</item>
+        <item>한국어(80%)</item>
+        <item>ภาษาไทย(99%)</item>
+        <item>Français(99%)</item>
+        <item>Español(80%)</item>
+    </array>
+
+</resources>

@@ -10,7 +10,6 @@ import android.util.Log;
 import com.chotix.mydiary1.db.DBStructure.ContactsEntry;
 import com.chotix.mydiary1.db.DBStructure.TopicEntry;
 import com.chotix.mydiary1.db.DBStructure.TopicOrderEntry;
-import com.chotix.mydiary1.db.DBStructure.DiaryEntry;
 import com.chotix.mydiary1.db.DBStructure.DiaryEntry_V2;
 import com.chotix.mydiary1.db.DBStructure.DiaryItemEntry_V2;
 import com.chotix.mydiary1.db.DBStructure.MemoEntry;

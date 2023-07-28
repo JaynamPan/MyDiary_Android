@@ -1,6 +1,7 @@
 package com.chotix.mydiary1.entries.diary.item;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -63,7 +64,10 @@ public class DiaryItemHelper extends Observable {
         if (diaryItem instanceof DiaryPhoto) {
             nowPhotoCount++;
         }
+        Log.e("Mytest","DiaryItemHelper diaryItem:"+diaryItem.toString());
         diaryItemList.add(diaryItem);
+        Log.e("Mytest","DiaryItemHelper diaryItemL.list:"+diaryItemList.toString());
+        Log.e("Mytest","DiaryItemHelper itemContentLayout:"+itemContentLayout.toString());
         itemContentLayout.addView(diaryItemList.get(diaryItemList.size() - 1).getView());
         if (diaryItemList.size() == 1) {
             setChanged();

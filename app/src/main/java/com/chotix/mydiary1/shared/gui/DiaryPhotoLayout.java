@@ -1,6 +1,7 @@
 package com.chotix.mydiary1.shared.gui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,9 @@ import com.facebook.imagepipeline.request.ImageRequestBuilder;
 public class DiaryPhotoLayout extends LinearLayout {
     private SimpleDraweeView SDV_diary_new_photo;
     private ImageView IV_diary_photo_delete;
+    public DiaryPhotoLayout(Context context){
+        super(context);
+    }
     public DiaryPhotoLayout(Activity activity) {
         super(activity);
         View v = LayoutInflater.from(activity).inflate(R.layout.layout_diaryphoto, this, true);

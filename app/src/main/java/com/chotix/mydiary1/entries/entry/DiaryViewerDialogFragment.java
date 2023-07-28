@@ -13,6 +13,8 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.PorterDuff;
 import android.location.Address;
 import android.location.Geocoder;
@@ -75,6 +77,7 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 
+import java.io.FileNotFoundException;
 import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -634,6 +637,16 @@ UpdateDiaryTask.UpdateDiaryCallBack, EditDiaryBackDialogFragment.BackDialogCallb
     private void loadFileFromTemp(String fileName) {
         try {
             String tempFileSrc = FileManager.FILE_HEADER + diaryFileManager.getDirAbsolutePath() + "/" + fileName;
+            //start test
+            Log.e("Mytest","DiaryViewerDialogFragment tmpPicSrc:"+tempFileSrc);
+            //Bitmap resizeBmp = BitmapFactory.decodeFile(tempFileSrc);
+            Bitmap resizeBmp=BitmapFactory.decodeFile(diaryFileManager.getDirAbsolutePath() + "/" + fileName);
+            if (resizeBmp==null){
+                throw new FileNotFoundException(tempFileSrc + " not found or bitmap is null");
+            }else {
+                Log.e("Mytest","DiaryViewerDialogFragment resizeBmp size: "+resizeBmp.getByteCount());
+            }
+            //end test
             DiaryPhoto diaryPhoto = new DiaryPhoto(getActivity());
             diaryPhoto.setPhoto(Uri.parse(tempFileSrc), fileName);
             DiaryTextTag tag = checkoutOldDiaryContent();
@@ -716,6 +729,7 @@ UpdateDiaryTask.UpdateDiaryCallBack, EditDiaryBackDialogFragment.BackDialogCallb
 
     @Override
     public void selectPhoto(Uri uri) {
+        Log.e("Mytest","diaryviewerdialogfragment selectphoto invoked");
         if (FileManager.isImage(
                 FileManager.getFileNameByUri(getActivity(), uri))) {
             //1.Copy bitmap to temp for rotating & resize

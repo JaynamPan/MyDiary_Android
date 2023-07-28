@@ -21,8 +21,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class PhotoOverviewActivity extends AppCompatActivity {
     public final static String PHOTO_OVERVIEW_TOPIC_ID = "PHOTOOVERVIEW_TOPIC_ID";
@@ -32,9 +30,9 @@ public class PhotoOverviewActivity extends AppCompatActivity {
     /**
      * GUI
      */
-    @BindView(R.id.RV_diary_photo_overview)
+
     RecyclerView RVDiaryPhotoOverview;
-    @BindView(R.id.RL_diary_photo_overview_no_images)
+
     RelativeLayout RLDiaryPhotoOverviewNoImages;
 
     /**
@@ -46,7 +44,9 @@ public class PhotoOverviewActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary_photo_overview);
-        ButterKnife.bind(this);
+
+        RVDiaryPhotoOverview = this.findViewById(R.id.RV_diary_photo_overview);
+        RLDiaryPhotoOverviewNoImages = this.findViewById(R.id.RL_diary_photo_overview_no_images);
         //get topic id
         long topicId = getIntent().getLongExtra(PHOTO_OVERVIEW_TOPIC_ID, -1);
         //get topic fail , close this activity
@@ -65,6 +65,7 @@ public class PhotoOverviewActivity extends AppCompatActivity {
             RLDiaryPhotoOverviewNoImages.setVisibility(View.VISIBLE);
         }
     }
+
     private void loadDiaryImageData(long topicId, long diaryId) {
         FileManager diaryRoot = new FileManager(PhotoOverviewActivity.this, DIARY_ROOT_DIR);
         File topicRootFile;

@@ -14,6 +14,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildTypes {
@@ -26,6 +27,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    sourceSets {
+        main{
+            jniLibs.srcDirs=["libs"]
+        }
+    }
+
 }
 
 dependencies {
@@ -34,7 +41,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     //lib
@@ -42,8 +49,8 @@ dependencies {
     implementation 'com.prolificinteractive:material-calendarview:1.4.3'
     implementation 'info.hoang8f:android-segmented:1.0.6'
     implementation 'com.facebook.fresco:fresco:3.0.0'
-    implementation 'com.jakewharton:butterknife:10.2.3'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+    //implementation 'com.jakewharton:butterknife:10.2.3'
+    //annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
     implementation 'com.larswerkman:HoloColorPicker:1.5'
     implementation 'com.nononsenseapps:filepicker:4.2.1'
     implementation 'com.github.amlcurran.showcaseview:library:5.4.3'
@@ -54,6 +61,7 @@ dependencies {
     implementation 'com.marshalchen.ultimaterecyclerview:library:0.7.2'
     implementation 'jp.wasabeef:recyclerview-animators:4.0.2'
     implementation 'com.google.android.gms:play-services-places:17.0.0'
+    implementation 'me.relex:photodraweeview:2.1.0'
 
 
 

@@ -2,6 +2,7 @@ package com.chotix.mydiary1.shared;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.chotix.mydiary1.BuildConfig;
 import com.chotix.mydiary1.R;
@@ -68,7 +69,10 @@ public class SPFManager {
         SharedPreferences settings = context.getSharedPreferences(SPF_CONFIG, 0);
         SharedPreferences.Editor PE = settings.edit();
         PE.putInt(CONFIG_LOCAL_LANGUAGE, languageCode);
-        PE.apply();
+        PE.commit();
+        // note here it must use commit for immediate writing,because the thread will
+        // be destroyed soon but apply is async,will do its job when the system is free
+        Log.e("Mytest", "language code was set to" + languageCode);
     }
 
     /**
@@ -108,7 +112,7 @@ public class SPFManager {
     public static int getTheme(Context context) {
         SharedPreferences settings = context.getSharedPreferences(SPF_CONFIG, 0);
         //default is close
-        return settings.getInt(CONFIG_THEME, ThemeManager.TAKI);
+        return settings.getInt(CONFIG_THEME, ThemeManager.getInstance().currentTheme);
 
     }
 

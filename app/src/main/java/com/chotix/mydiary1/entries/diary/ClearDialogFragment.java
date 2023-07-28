@@ -25,11 +25,11 @@ public class ClearDialogFragment extends CommonDialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         try {
-            //callback = (ClearDialogCallback) getTargetFragment();
-            Activity activity = getActivity();
-            if (activity instanceof ClearDialogCallback) {
-                callback = (ClearDialogCallback) activity;
-            }
+            callback = (ClearDialogCallback) getTargetFragment();
+//            Activity activity = getActivity();
+//            if (activity instanceof ClearDialogCallback) {
+//                callback = (ClearDialogCallback) activity;
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ScrollView;
 
 import androidx.annotation.DrawableRes;
-import androidx.core.view.ViewCompat;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

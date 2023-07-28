@@ -20,54 +20,11 @@ public class AboutActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_about);
         license = new StringBuilder();
-        license.append("This open source project is coding by Daxia. You can copy and modify it for free.\n" +
-                "But please don't release into Google Play again without any modifying. To see more information:\n" +
-                "https://github.com/DaxiaK/MyDiary\n\n");
-        license.append("This project release by MIT License:\n");
-        license.append(
-                new LicenseObj("MyDiary", "Daxia", "2016 - 2017", LicenseObj.MIT)
-                        .getLicense());
-        license.append("\nSome icon is Flaticon Basic License from Flaticon:\n(www.flaticon.com)\n");
-        license.append(
-                new LicenseObj("", "Freepik", "", LicenseObj.Flaticon)
-                        .getLicense());
-        license.append("\n\nI use some lib from:\n");
-        license.append(
-                new LicenseObj("android-segmented-control", "Le Van Hoang", "2014", LicenseObj.MIT)
-                        .getLicense());
-        license.append(
-                new LicenseObj("HoloColorPicker", "Lars Werkman", "2012", LicenseObj.APACHE)
-                        .getLicense());
-        license.append(
-                new LicenseObj("uCrop", "Yalantis", "2016", LicenseObj.APACHE)
-                        .getLicense());
-        license.append(
-                new LicenseObj("CircleImageView", "Henning Dodenhof", "2014 - 2016", LicenseObj.APACHE)
-                        .getLicense());
-        license.append(
-                new LicenseObj("pinyin4j", "Li Min", "2006", LicenseObj.GPLv2)
-                        .getLicense());
-        license.append(
-                new LicenseObj("UltimateRecyclerView", "Marshal Chen", "2014-present", LicenseObj.APACHE)
-                        .getLicense());
-        license.append(
-                new LicenseObj("Fresco", "Facebook, Inc.", "2015-present", LicenseObj.BSD)
-                        .getLicense());
-        license.append(
-                new LicenseObj("NoNonsense-FilePicker", "spacecowboy", "", LicenseObj.MPLv2)
-                        .getLicense());
-        license.append(
-                new LicenseObj("device-year-class", "Facebook, Inc.", "2015", LicenseObj.BSD)
-                        .getLicense());
-        license.append(
-                new LicenseObj("android-advancedrecyclerview", "Haruki Hasegawa", "2015", LicenseObj.APACHE)
-                        .getLicense());
-        license.append(
-                new LicenseObj("Material Calendar View", "prolificinteractive", "2016", LicenseObj.MIT)
-                        .getLicense());
-        license.append(
-                new LicenseObj("ShowcaseView", "Alex Curran ", "2012-2014", LicenseObj.APACHE)
-                        .getLicense());
+        license.append("\t\t\tDear User:\n" +
+                "\t\t\tThis small app is coded based on Daxiak's MyDiary on github.\n" +
+                "\t\t\tThe app still has some bugs...Hope you don't mind.\n" +
+                "\t\t\tHope you enjoy using this diary app and record your life here :).\n\n"+
+                "\t\t\tNOTE: you can set your password to keep your diary safe.\n");
 
         ((TextView) findViewById(R.id.TV_about_text)).setText(license.toString());
     }

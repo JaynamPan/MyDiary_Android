@@ -1,7 +1,11 @@
 package com.chotix.mydiary1.memo;
 
+import android.content.Context;
+import android.content.res.Configuration;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -15,12 +19,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chotix.mydiary1.R;
 import com.chotix.mydiary1.db.DBManager;
+import com.chotix.mydiary1.shared.MyDiaryApplication;
 import com.chotix.mydiary1.shared.ThemeManager;
 import com.chotix.mydiary1.shared.ViewTools;
 import com.chotix.mydiary1.shared.statusbar.ChinaPhoneHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MemoActivity extends FragmentActivity implements
         View.OnClickListener, EditMemoDialogFragment.MemoCallback, OnStartDragListener {
@@ -65,8 +71,9 @@ public class MemoActivity extends FragmentActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memo);
         //For set status bar
-        ChinaPhoneHelper.setStatusBar(this, true);
 
+        ChinaPhoneHelper.setStatusBar(this, true);
+        setStatusBarBgColor();
         topicId = getIntent().getLongExtra("topicId", -1);
         if (topicId == -1) {
             finish();
@@ -192,5 +199,24 @@ public class MemoActivity extends FragmentActivity implements
     @Override
     public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
         touchHelper.startDrag(viewHolder);
+    }
+    //fix the language bug
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(updateBaseContextLocale(base));
+
+    }
+
+    private Context updateBaseContextLocale(Context context) {
+        Locale locale = MyDiaryApplication.mLocale;
+        Log.e("Mytest", "memo mLocale:" + locale);
+        Locale.setDefault(locale);
+        Configuration configuration = context.getResources().getConfiguration();
+        configuration.setLocale(locale);
+        return context.createConfigurationContext(configuration);
+    }
+    private void setStatusBarBgColor(){
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        getWindow().setStatusBarColor(Color.WHITE);
     }
 }

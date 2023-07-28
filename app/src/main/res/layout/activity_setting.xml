@@ -164,7 +164,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/setting_content_margin_top"
-                android:text="@string/setting_theme_apply" />
+                android:text="@string/setting_theme_apply"
+                android:textColor="@color/black"/>
 
 
             <View
@@ -212,7 +213,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/setting_group_margin_top"
-                android:text="@string/setting_system_title"
+                android:text="@string/setting_system_note"
                 android:textColor="@android:color/black"
                 android:textSize="28sp" />
 
@@ -220,8 +221,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/setting_group_margin_top"
                 android:layout_marginTop="@dimen/setting_content_margin_top"
+                android:layout_marginBottom="@dimen/setting_group_margin_top"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -230,17 +231,10 @@
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:gravity="center_vertical"
-                    android:text="@string/setting_system_fix_dir_hint"
+                    android:text="@string/setting_system_note_content"
                     android:textColor="@color/setting_hint_text_color"
                     android:textSize="16sp" />
 
-                <com.chotix.mydiary1.shared.gui.MyDiaryButton
-                    android:id="@+id/But_setting_fix_photo_17_dir"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_weight="2"
-                    android:text="@string/setting_system_fix_dir_button" />
 
             </LinearLayout>
         </LinearLayout>

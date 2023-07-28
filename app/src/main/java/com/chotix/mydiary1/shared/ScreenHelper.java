@@ -48,6 +48,7 @@ public class ScreenHelper {
         openImmersiveMode(decorView);
     }
 
+
     private static void openImmersiveMode(View view) {
         view.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE

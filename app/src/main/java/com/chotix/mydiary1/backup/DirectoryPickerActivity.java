@@ -1,21 +1,11 @@
 package com.chotix.mydiary1.backup;
 
-import android.graphics.Color;
-import android.os.Bundle;
 import android.os.Environment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
 
-import com.chotix.mydiary1.R;
-import com.chotix.mydiary1.shared.ThemeManager;
 import com.nononsenseapps.filepicker.AbstractFilePickerFragment;
 import com.nononsenseapps.filepicker.FilePickerActivity;
-import com.nononsenseapps.filepicker.FilePickerFragment;
 
 import java.io.File;
 

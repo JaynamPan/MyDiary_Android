@@ -64,7 +64,7 @@ public class EntriesAdapter extends RecyclerView.Adapter<EntriesAdapter.EntriesV
 
         holder.getTVDate().setText(String.valueOf(calendar.get(Calendar.DAY_OF_MONTH)));
         holder.getTVDay().setText(daysSimpleName[calendar.get(Calendar.DAY_OF_WEEK) - 1]);
-        holder.getTVTime().setText(String.valueOf(dateFormat.format(calendar.getTime())));
+        holder.getTVTime().setText(dateFormat.format(calendar.getTime()));
         holder.getTVTitle().setText(entriesList.get(position).getTitle());
         holder.getTVSummary().setText(entriesList.get(position).getSummary());
 

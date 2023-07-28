@@ -1,22 +1,29 @@
 package com.chotix.mydiary1;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.PorterDuff;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.chotix.mydiary1.db.DBManager;
 import com.chotix.mydiary1.main.MainSettingDialogFragment;
@@ -31,6 +38,7 @@ import com.chotix.mydiary1.main.topic.ITopic;
 import com.chotix.mydiary1.main.topic.Memo;
 import com.chotix.mydiary1.oobe.CustomViewTarget;
 import com.chotix.mydiary1.shared.FileManager;
+import com.chotix.mydiary1.shared.MyDiaryApplication;
 import com.chotix.mydiary1.shared.SPFManager;
 import com.chotix.mydiary1.shared.ThemeManager;
 import com.chotix.mydiary1.shared.gui.MyDiaryButton;
@@ -52,6 +60,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -101,6 +110,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView TV_main_profile_username;
     private EditText EDT_main_topic_search;
     private ImageView IV_main_setting;
+    /*
+     * EditText
+     */
+    private View rootView;
+    private ViewTreeObserver.OnGlobalLayoutListener globalLayoutListener;
+    private int keyboardHeightThreshold = 300;
 
 
     @Override
@@ -123,6 +138,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         IV_main_setting.setOnClickListener(this);
 
         RecyclerView_topic = findViewById(R.id.RecyclerView_topic);
+        rootView = findViewById(android.R.id.content);
+
         topicList = new ArrayList<>();
         dbManager = new DBManager(MainActivity.this);
         initProfile();
@@ -136,12 +153,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dbManager.closeDB();
         mainTopicAdapter.notifyDataSetChanged(true);
 
+        //listen the edit text
+        autoClearEditTextFocus();
+
+
         initOOBE();
         //Check show Release note dialog.
-        if (getIntent().getBooleanExtra("showReleaseNote", false)) {
-            ReleaseNoteDialogFragment releaseNoteDialogFragment = new ReleaseNoteDialogFragment();
-            releaseNoteDialogFragment.show(getSupportFragmentManager(), "releaseNoteDialogFragment");
+        if (SPFManager.getFirstRun(this)) {
+            if (getIntent().getBooleanExtra("showReleaseNote", false)) {
+                ReleaseNoteDialogFragment releaseNoteDialogFragment = new ReleaseNoteDialogFragment();
+                releaseNoteDialogFragment.show(getSupportFragmentManager(), "releaseNoteDialogFragment");
+            }
         }
+
+        SPFManager.setFirstRun(this, false);
     }
 
 
@@ -216,6 +241,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         TV_main_profile_username.setText(YourNameIs);
         LL_main_profile.setBackground(themeManager.getProfileBgDrawable(this));
+
     }
 
     private void initBottomBar() {
@@ -616,4 +642,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initProfile();
         loadProfilePicture();
     }
+
+    private void autoClearEditTextFocus() {
+        globalLayoutListener = () -> {
+            Rect rect = new Rect();
+            rootView.getWindowVisibleDisplayFrame(rect);
+            int heightDiff = rootView.getRootView().getHeight() - (rect.bottom - rect.top);
+            Log.e("Mytest", "height diff:" + heightDiff);
+            if (heightDiff <= keyboardHeightThreshold) {
+                EDT_main_topic_search.clearFocus();
+            }
+        };
+        rootView.getViewTreeObserver().addOnGlobalLayoutListener(globalLayoutListener);
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(updateBaseContextLocale(base));
+
+    }
+
+    private Context updateBaseContextLocale(Context context) {
+        Locale locale = MyDiaryApplication.mLocale;
+        Log.e("Mytest", "main mLocale:" + locale);
+        Locale.setDefault(locale);
+        Configuration configuration = context.getResources().getConfiguration();
+        configuration.setLocale(locale);
+        return context.createConfigurationContext(configuration);
+    }
+
+
 }

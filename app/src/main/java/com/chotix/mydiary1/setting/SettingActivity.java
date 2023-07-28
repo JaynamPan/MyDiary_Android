@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -63,7 +64,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
     private Spinner SP_setting_theme, SP_setting_language;
     private ImageView IV_setting_profile_bg, IV_setting_theme_main_color, IV_setting_theme_dark_color;
     private Button But_setting_theme_default_bg, But_setting_theme_default, But_setting_theme_apply;
-    private Button But_setting_fix_photo_17_dir;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -89,8 +90,6 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
 
         SP_setting_language = (Spinner) findViewById(R.id.SP_setting_language);
 
-        But_setting_fix_photo_17_dir = (Button) findViewById(R.id.But_setting_fix_photo_17_dir);
-        But_setting_fix_photo_17_dir.setOnClickListener(this);
 
         initSpinner();
         initTheme(themeManager.getCurrentTheme());
@@ -313,31 +312,7 @@ public class SettingActivity extends AppCompatActivity implements View.OnClickLi
                         SettingColorPickerFragment.newInstance(themeManager.getThemeDarkColor(this), R.id.IV_setting_theme_dark_color);
                 secColorPickerFragment.show(getSupportFragmentManager(), "secColorPickerFragment");
                 break;
-            case R.id.But_setting_fix_photo_17_dir:
-                //The new diary dir was updated in version 17
-                //But , some device have a problem , so I add this setting.
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
 
-                            SettingActivity.this.runOnUiThread(new Runnable() {
-                                public void run() {
-                                    Toast.makeText(SettingActivity.this, getString(R.string.toast_setting_wont_fix), Toast.LENGTH_LONG).show();
-                                }
-                            });
-
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            SettingActivity.this.runOnUiThread(new Runnable() {
-                                public void run() {
-                                    Toast.makeText(SettingActivity.this, getString(R.string.toast_setting_fail), Toast.LENGTH_LONG).show();
-                                }
-                            });
-                        }
-                    }
-                }).run();
-                break;
         }
     }
 

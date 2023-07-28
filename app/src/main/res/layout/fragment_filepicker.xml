@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -33,9 +31,10 @@
         android:layout_below="@+id/my_picker_toolbar"
         android:descendantFocusability="afterDescendants"
         android:focusable="true"
-        tools:listitem="@layout/nnf_filepicker_listitem_dir" />
+        tools:listitem="@layout/rv_file_item" />
 
-    <FrameLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:id="@+id/my_buttons_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -91,12 +90,12 @@
                 app:tint="@color/black" />
 
         </LinearLayout>
-    </FrameLayout>
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_above="@id/my_buttons_container"
-        android:background="@color/white" />
+        android:background="@color/grey" />
 </RelativeLayout>

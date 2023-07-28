@@ -1,0 +1,155 @@
+<resources>
+    <string name="app_name">ডায়েরি</string>
+    <string name="init_message">আপনার ডায়েরিতে স্বাগতম</string>
+    <!-- Profile -->
+    <string name="profile_username_taki">টাকি</string>
+    <string name="profile_username_default">ব্যবহারকারী</string>
+    <string name="profile_username_mitsuha">মিশুহা</string>
+    <string name="toast_change_theme">থিম পরিবর্তন হচ্ছে…</string>
+    <string name="emergency_contact">জরুরী</string>
+    <string name="your_name_is">ব্যবহারকারী</string>
+    <!-- Topic detail -->
+    <string name="topic_detail_name">বিষয়ের নাম</string>
+    <string name="topic_detail_text_color">লেখার রঙ</string>
+    <string name="topic_dialog_delete_title">মুছে ফেলা</string>
+    <string name="topic_dialog_delete_content">আপনি কি ডায়েরি মুছে দিতে চান?</string>
+    <string name="toast_topic_empty">বিষয়ের নাম খালি</string>
+    <string name="topic_topic_bg_fail">বিষয়ের পটভূমি পরিবর্তন করতে ব্যর্থ…</string>
+    <string name="topic_detail_current_bg">বিষয় পটভূমি</string>
+    <string name="topic_detail_default_bg">ডিফল্ট ব্যাকগ্রাউন্ড</string>
+    <!-- Dialog  -->
+    <string name="dialog_button_ok">ঠিক আছে</string>
+    <string name="dialog_button_call">কল</string>
+    <string name="dialog_button_cancel">বাতিল করুন</string>
+    <string name="dialog_button_delete">মুছে ফেলা</string>
+    <string name="process_dialog_loading">লোড হচ্ছে…</string>
+    <string name="process_dialog_saving">সংরক্ষণ করা হচ্ছে…</string>
+    <!-- Diary Activity -->
+    <string name="segmented_entries">এন্ট্রি</string>
+    <string name="segmented_calendar">ক্যালেন্ডার</string>
+    <string name="segmented_Diary">ডায়েরি</string>
+    <string name="diary_back_message">এডিটিং এ ডায়েরি আছে, তুমি কি চলে যেতে চাও?</string>
+    <!-- Entries  -->
+    <plurals name="entries_count">
+        <item quantity="one">%1$d প্রবেশ</item>
+        <item quantity="other">%1$d প্রবেশ</item>
+    </plurals>
+    <string name="entries_edit_view">সম্পাদনার জন্য ডায়েরি ক্লিক করুন</string>
+    <string name="entries_edit_dialog_delete_content">আপনি কি সত্যিই এই ডায়েরি মুছে দিতে চান?</string>
+    <string name="entries_summary_photo">**ফটো**</string>
+    <string name="toast_diary_long_click_edit">সম্পাদনা করা হচ্ছে…</string>
+    <!-- Diary  -->
+    <string name="diary_no_location">কোনো অবস্থান নেই</string>
+    <string name="diary_location_permission_title">অনুমতি</string>
+    <string name="diary_location_permission_content">অবস্থানের নাম পেতে অনুমতি প্রয়োজন</string>
+    <string name="diary_photo_permission_content">ছবি যোগ করার জন্য অনুমতি প্রয়োজন</string>
+    <string name="diary_title_hint">ডায়েরির শিরোনাম</string>
+    <string name="diary_content_hint">এখানে আপনার ডায়েরি লিখুন</string>
+    <string name="diary_clear_message">আপনি এটা মুছে দিতে চান?</string>
+    <string name="diary_no_title">কোনো শিরোনাম নেই</string>
+    <string name="toast_diary_empty">ডায়েরি খালি</string>
+    <string name="toast_not_image">ফাইলটি একটি ছবি নয়</string>
+    <string name="toast_photo_path_error">ছবির পথ কিছু সমস্যা আছে</string>
+    <string name="toast_photo_intent_error">ডিভাইসের ইমেজ রিসোর্স পেতে ব্যর্থ</string>
+    <string name="toast_max_photo">সর্বাধিক নির্বাচিত ফটো হল %1$d</string>
+    <string name="toast_space_insufficient">ফাঁকা স্থান অপর্যাপ্ত</string>
+    <string name="toast_diary_update_successful">ডায়েরি আপডেট করা সফল হয়েছে৷</string>
+    <string name="toast_diary_update_fail">ডায়েরি আপডেট করা ব্যর্থ হয়েছে</string>
+    <string name="toast_diary_insert_successful">ডায়েরি সংরক্ষিত</string>
+    <string name="toast_diary_insert_fail">ডায়েরি সংরক্ষণ ব্যর্থ হয়েছে</string>
+    <!-- Diary Viewer edit -->
+    <string name="toast_diary_copy_to_edit_fail">ফটো ডেটা পড়া ব্যর্থ হয়েছে…</string>
+    <!-- Memo -->
+    <string name="memo_item_add">যোগ করুন</string>
+    <string name="toast_memo_empty">মেমো খালি!</string>
+    <!-- Contacts -->
+    <string name="contacts_call_phone_permission_title">অনুমতি</string>
+    <string name="contacts_call_phone_permission_content">ফোন কল করার অনুমতি প্রয়োজন</string>
+    <string name="contacts_call_phone_no_call_function">আপনার ডিভাইস ফোন কল করতে পারে না</string>
+    <string name="contacts_detail_edt_name">নাম</string>
+    <string name="contacts_detail_edt_phone_number">ফোন</string>
+    <string name="toast_contacts_empty">পরিচিতি খালি!</string>
+    <!-- About -->
+    <string name="about_title">সম্পর্কিত</string>
+    <!-- Setting -->
+    <string name="setting_theme_title">থিম</string>
+    <string name="setting_theme_hint">আপনার থিম চয়ন করুন</string>
+    <string name="setting_theme_main_color">প্রধান রং</string>
+    <string name="setting_theme_sec_color">দ্বিতীয় রঙ</string>
+    <string name="setting_theme_default_profile_bg">ডিফল্ট\n পটভূমি</string>
+    <string name="setting_theme_default_color">ডিফল্ট রঙ</string>
+    <string name="setting_theme_apply">আবেদন করুন</string>
+    <string name="setting_theme_profile_bg">প্রোফাইল ব্যাকগ্রাউন্ড</string>
+    <string name="setting_language_title">ভাষা</string>
+    <string name="setting_language_hint">আপনার ভাষা চয়ন করুন</string>
+    <string name="toast_save_profile_banner_fail">প্রোফাইলের ব্যানার সংরক্ষণ করতে ব্যর্থ…</string>
+    <string name="toast_crop_profile_banner_fail">প্রোফাইলের ব্যানার ক্রপ করতে ব্যর্থ…</string>
+    <string name="toast_save_profile_picture_fail">প্রোফাইল ছবি সংরক্ষণ করতে ব্যর্থ…</string>
+    <string name="toast_crop_profile_picture_fail">প্রোফাইল ছবি ক্রপ করতে ব্যর্থ…</string>
+    <string name="setting_system_title">পদ্ধতি</string>
+    <string name="setting_system_note">বিঃদ্রঃ</string>
+    <string name="setting_system_fix_dir_hint">আপনার ফটো আপডেট করার পরে চলে গেলে, ঠিক করতে ক্লিক করুন</string>
+    <string name="setting_system_note_content">আপনি এখানে থিম এবং ভাষা পরিবর্তন করতে পারেন</string>
+    <string name="setting_system_fix_dir_button">ছবি ঠিক করুন</string>
+    <string name="toast_setting_successful">সফল</string>
+    <string name="toast_setting_wont_fix">আপনি কিছু ঠিক করতে হবে না</string>
+    <string name="toast_setting_fail">ব্যর্থ</string>
+    <!-- Google service API -->
+    <string name="toast_google_service_not_work">আপনার Google পরিষেবাগুলি কাজ করে না বা আপডেট করতে হবে৷</string>
+    <!-- Diary Geocoder & Location   -->
+    <string name="toast_location_not_open">আপনার অবস্থান নিষ্ক্রিয় করা হয়েছে</string>
+    <string name="toast_geocoder_fail">ঠিকানা পরিবর্তন করা যাবে না</string>
+    <string name="toast_location_timeout">অবস্থানের সময়সীমা পান</string>
+    <!-- Password -->
+    <string name="password_create_pwd">লক তৈরি করতে পাসওয়ার্ড সেট করুন</string>
+    <string name="password_create_pwd_with_verify">পাসওয়ার্ড নিশ্চিত করুন</string>
+    <string name="password_verify_pwd">পাসওয়ার্ড লিখুন</string>
+    <string name="password_remove_pwd">লক সরাতে পাসওয়ার্ড লিখুন</string>
+    <string name="password_create_pwd_with_verify_msg">পাসওয়ার্ড মেলে না</string>
+    <string name="password_verify_pwd_msg">পাসওয়ার্ড মেলে না</string>
+    <string name="password_remove_pwd_msg">পুরানো পাসকোড মেলে না</string>
+    <!-- Back event -->
+    <string name="main_activity_exit_app">প্রস্থান করতে আবার টিপুন</string>
+    <!-- Backup overwrite string -->
+    <string name="nnf_select_something_first">প্রথমে কিছু নির্বাচন করুন</string>
+    <string name="nnf_permission_external_write_denied">ফাইল সিস্টেম অ্যাক্সেস করার অনুমতি প্রয়োজন</string>
+    <!-- Backup -->
+    <string name="backup_title">ব্যাকআপ</string>
+    <string name="backup_export_title">রপ্তানি</string>
+    <string name="backup_export_hint">সমস্ত ডেটা রপ্তানি করুন (প্রোফাইল সহ নয়)</string>
+    <string name="backup_export_path_hint">রপ্তানি ফোল্ডার নির্বাচন করতে ক্লিক করুন</string>
+    <string name="backup_export_button">রপ্তানি</string>
+    <string name="backup_export_share_title">সঙ্গে ভাগ</string>
+    <string name="backup_export_can_not_write">এই পথে লিখতে পারছি না, অনুগ্রহ করে আবার নির্বাচন করুন</string>
+    <string name="toast_export_successful">%1$s\nরপ্তানি সফল</string>
+    <string name="toast_export_fail">এক্সপোর্ট ব্যর্থ…অনুগ্রহ করে অনুমতি বা স্টোরেজ চেক করুন</string>
+    <string name="backup_import_title">আমদানি</string>
+    <string name="backup_import_hint">বিদ্যমান ফাইল আমদানি করুন (প্রোফাইল সহ নয়)</string>
+    <string name="backup_import_path_hint">আমদানি ফাইল নির্বাচন করতে ক্লিক করুন</string>
+    <string name="backup_import_button">আমদানি</string>
+    <string name="backup_import_can_not_read">এই ফাইল পড়া যাচ্ছে না, আবার নির্বাচন করুন</string>
+    <string name="toast_import_successful">আমদানি সফল</string>
+    <string name="toast_import_fail">ইম্পোর্ট ফেইল… ফাইল চেক করুন</string>
+    <!-- OOBE -->
+    <string name="oobe_next_button">পরবর্তী</string>
+    <string name="oobe_main_your_name_title">তোমার নাম</string>
+    <string name="oobe_main_your_name_content">আপনি আপনার ব্যক্তিগত তথ্য সেট করতে পারেন.</string>
+    <string name="oobe_main_topic_list_title">বিষয় তালিকা</string>
+    <string name="oobe_main_topic_list_content">আপনার ব্যক্তিগত ডায়েরি, মেমো বা পরিচিতি!\nসম্পাদনা বা মুছতে এটি সোয়াইপ করুন.\n(ডিফল্ট ডেটা নমুনা, আপনি এটি মুছে ফেলতে পারেন)</string>
+    <string name="oobe_main_search_title">অনুসন্ধান করুন</string>
+    <string name="oobe_main_search_content">আপনি কিছু বিষয় অনুসন্ধান করতে পারেন.</string>
+    <string name="oobe_main_adv_setting_title">অগ্রগামী ব্যবস্থা.</string>
+    <string name="oobe_main_adv_setting_content">উন্নত সেটিংস খুলুন.\nটপিক তৈরি, অ্যাপ সেটিং, পাসকোড, ব্যাকআপ এবং প্রায় সহ.</string>
+    <string name="oobe_main_mydiary_title">আমার ডায়েরি</string>
+    <string name="oobe_main_mydiary_content">আমি আশা করি আপনি এই অ্যাপটি উপভোগ করবেন।\nএখন আপনার নামের গল্প লিখুন!</string>
+    <!-- Photo viewer -->
+    <string name="photo_viewer_topic_fail">ডায়েরি ব্যর্থ পান</string>
+    <string name="photo_viewer_photo_path_fail">ছবির পথ ব্যর্থ পেতে</string>
+    <string name="photo_viewer_no_images">কোনো ছবি নেই</string>
+    <!--Release Note-->
+    <string name="release_note_title">রিলিজ নোট</string>
+    <string name="release_note">সংস্করণ 1.0\n
+        নোট নিন, জীবন রেকর্ড করুন
+    </string>
+    <string name="release_note_close_remind">আবার দেখাবেন না</string>
+</resources>

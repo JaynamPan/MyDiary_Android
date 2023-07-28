@@ -90,7 +90,7 @@ ExportAsyncTask.ExportCallBack,ImportAsyncTask.ImportCallBack{
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.TV_backup_export_src:
-                Intent exportIntent = new Intent(this, DirectoryPickerActivity.class);
+                Intent exportIntent = new Intent(this, MyDirectoryPickerActivity.class);
 
                 exportIntent.putExtra(FilePickerActivity.EXTRA_ALLOW_MULTIPLE, false);
                 exportIntent.putExtra(FilePickerActivity.EXTRA_ALLOW_CREATE_DIR, true);
@@ -99,7 +99,7 @@ ExportAsyncTask.ExportCallBack,ImportAsyncTask.ImportCallBack{
                 startActivityForResult(exportIntent, EXPORT_SRC_PICKER_CODE);
                 break;
             case R.id.TV_backup_import_src:
-                Intent importIntent = new Intent(this, DirectoryPickerActivity.class);
+                Intent importIntent = new Intent(this, MyDirectoryPickerActivity.class);
 
                 importIntent.putExtra(FilePickerActivity.EXTRA_ALLOW_MULTIPLE, false);
                 importIntent.putExtra(FilePickerActivity.EXTRA_ALLOW_CREATE_DIR, false);

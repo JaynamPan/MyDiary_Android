@@ -1,9 +1,13 @@
 package com.chotix.mydiary1.shared;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.res.Configuration;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.os.ConfigurationCompat;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
@@ -16,6 +20,11 @@ import java.util.Set;
 
 public class MyDiaryApplication extends Application {
     boolean hasPassword = false;
+    /*
+    * try to fix the locale
+    * */
+    public static Locale mLocale;
+
 
     @Override
     public void onCreate() {
@@ -50,19 +59,40 @@ public class MyDiaryApplication extends Application {
     }
 
     private void setLocaleLanguage() {
-        Locale locale;
-        locale = Locale.ENGLISH;
-        Locale.setDefault(locale);
-        Configuration config = getBaseContext().getResources().getConfiguration();
-        overwriteConfigurationLocale(config, locale);
+        switch (SPFManager.getLocalLanguageCode(this)) {
+            case 1:
+                mLocale = Locale.ENGLISH;
+                break;
+            case 2:
+                mLocale = Locale.CHINESE;
+                break;
+            case 3:
+                mLocale = new Locale("bn","");
+                break;
+
+            // 0 = default = language of system
+            default:
+                mLocale = Locale.getDefault();
+                break;
+        }
+
     }
 
-    private void overwriteConfigurationLocale(Configuration config, Locale locale) {
-        //TODO FIX updateConfiguration on Android N
-        config.setLocale(locale);
-        getBaseContext().getResources()
-                .updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(updateBaseContextLocale(base));
+
     }
+    private Context updateBaseContextLocale(Context context){
+        if(mLocale==null){
+            mLocale=Locale.getDefault();
+        }
+        Locale.setDefault(mLocale);
+        Configuration configuration=context.getResources().getConfiguration();
+        configuration.setLocale(mLocale);
+        return context.createConfigurationContext(configuration);
+    }
+
 
     public boolean isHasPassword() {
         return hasPassword;
@@ -71,4 +101,5 @@ public class MyDiaryApplication extends Application {
     public void setHasPassword(boolean hasPassword) {
         this.hasPassword = hasPassword;
     }
+
 }

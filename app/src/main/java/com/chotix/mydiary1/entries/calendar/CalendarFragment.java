@@ -26,7 +26,6 @@ import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 import com.prolificinteractive.materialcalendarview.spans.DotSpan;
 
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 
 public class CalendarFragment extends BaseDiaryFragment implements View.OnClickListener,

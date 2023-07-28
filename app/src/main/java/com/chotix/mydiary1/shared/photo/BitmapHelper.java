@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.util.Log;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -35,6 +36,14 @@ public class BitmapHelper {
         options.inJustDecodeBounds = false;
         Bitmap bitmap = BitmapFactory.decodeStream(inputStream, null, options);
         inputStream.close();
+        //test start
+        if (bitmap!=null){
+            int bitmapSize=bitmap.getByteCount();
+            Log.e("Mytest","bitmaphelper getBitmapFromReturnedImage bitmap size: "+bitmapSize);
+        }else {
+            Log.e("Mytest","bitmaphelper getBitmapFromReturnedImage bitmap is null");
+        }
+        //test end
         return bitmap;
     }
     public static Bitmap getBitmapFromTempFileSrc(String tempFileSrc, int reqWidth, int reqHeight) throws IOException {

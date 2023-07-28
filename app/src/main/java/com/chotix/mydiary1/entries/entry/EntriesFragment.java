@@ -45,16 +45,16 @@ public class EntriesFragment extends BaseDiaryFragment  implements DiaryViewerDi
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_entries, container, false);
 
-        IV_entries_edit = (ImageView) rootView.findViewById(R.id.IV_entries_edit);
+        IV_entries_edit = rootView.findViewById(R.id.IV_entries_edit);
         IV_entries_edit.setOnClickListener(this);
-        IV_entries_photo = (ImageView) rootView.findViewById(R.id.IV_entries_photo);
+        IV_entries_photo = rootView.findViewById(R.id.IV_entries_photo);
         IV_entries_photo.setOnClickListener(this);
-        TV_entries_edit_msg = (TextView) rootView.findViewById(R.id.TV_entries_edit_msg);
+        TV_entries_edit_msg = rootView.findViewById(R.id.TV_entries_edit_msg);
         TV_entries_edit_msg.setTextColor(ThemeManager.getInstance().getThemeMainColor(getActivity()));
 
-        RecyclerView_entries = (RecyclerView) rootView.findViewById(R.id.RecyclerView_entries);
-        TV_entries_count = (TextView) rootView.findViewById(R.id.TV_entries_count);
-        RL_entries_edit_bar = (RelativeLayout) rootView.findViewById(R.id.RL_entries_edit_bar);
+        RecyclerView_entries = rootView.findViewById(R.id.RecyclerView_entries);
+        TV_entries_count = rootView.findViewById(R.id.TV_entries_count);
+        RL_entries_edit_bar = rootView.findViewById(R.id.RL_entries_edit_bar);
         RL_entries_edit_bar.setBackgroundColor(ThemeManager.getInstance().getThemeMainColor(getActivity()));
         return rootView;
     }

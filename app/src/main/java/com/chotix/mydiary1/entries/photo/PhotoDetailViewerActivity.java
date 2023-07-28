@@ -16,9 +16,6 @@ import com.chotix.mydiary1.shared.ScreenHelper;
 
 import java.util.ArrayList;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class PhotoDetailViewerActivity extends AppCompatActivity {
     public final static String DIARY_PHOTO_FILE_LIST = "DIARY_PHOTO_FILE_LIST";
     public final static String SELECT_POSITION = "SELECT_POSITION";
@@ -26,7 +23,6 @@ public class PhotoDetailViewerActivity extends AppCompatActivity {
     /**
      * GUI
      */
-    @BindView(R.id.VP_diary_photo_detail)
     ViewPager VPDiaryPhotoDetail;
 
 
@@ -42,7 +38,8 @@ public class PhotoDetailViewerActivity extends AppCompatActivity {
         setStatusBarColor();
         //Set the layout
         setContentView(R.layout.activity_diary_photo_detail_viewer);
-        ButterKnife.bind(this);
+        //ButterKnife.bind(this);
+        VPDiaryPhotoDetail=this.findViewById(R.id.VP_diary_photo_detail);
 
         //Modify the status bar color
         diaryPhotoFileList = getIntent().getParcelableArrayListExtra(DIARY_PHOTO_FILE_LIST);

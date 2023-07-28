@@ -1,8 +1,12 @@
 package com.chotix.mydiary1.contacts;
 
+import android.content.Context;
+import android.content.res.Configuration;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.chotix.mydiary1.R;
 import com.chotix.mydiary1.db.DBManager;
+import com.chotix.mydiary1.shared.MyDiaryApplication;
 import com.chotix.mydiary1.shared.SPFManager;
 import com.chotix.mydiary1.shared.ThemeManager;
 import com.chotix.mydiary1.shared.gui.LetterComparator;
@@ -27,7 +32,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class ContactsActivity extends FragmentActivity implements View.OnClickListener,
-ContactsDetailDialogFragment.ContactsDetailCallback,LetterSortLayout.OnTouchingLetterChangedListener{
+        ContactsDetailDialogFragment.ContactsDetailCallback, LetterSortLayout.OnTouchingLetterChangedListener {
 
     /**
      * getId
@@ -39,13 +44,8 @@ ContactsDetailDialogFragment.ContactsDetailCallback,LetterSortLayout.OnTouchingL
      */
 
     private String EN;
-    private String JA;
-    private String ZH_TW;
-    private String ZH_CN;
-    private String KO;
-    private String TH_TH;
-    private String FR;
-    private String ES;
+    private String ZH;
+    private String BN;
 
     /**
      * UI
@@ -78,7 +78,7 @@ ContactsDetailDialogFragment.ContactsDetailCallback,LetterSortLayout.OnTouchingL
         setContentView(R.layout.activity_contacts);
         //For set status bar
         ChinaPhoneHelper.setStatusBar(this, true);
-
+        setStatusBarBgColor();
 
         themeManager = ThemeManager.getInstance();
         initLanguageStr();
@@ -124,17 +124,13 @@ ContactsDetailDialogFragment.ContactsDetailCallback,LetterSortLayout.OnTouchingL
         loadContacts();
         initTopicAdapter();
     }
+
     private void initLanguageStr() {
         EN = Locale.ENGLISH.getLanguage();
-        JA = Locale.JAPANESE.getLanguage();
-        ZH_TW = Locale.TAIWAN.getLanguage()
-                + "-" + Locale.TAIWAN.getCountry();
-        ZH_CN = Locale.CHINA.getLanguage()
-                + "-" + Locale.CHINA.getCountry();
-        KO = Locale.KOREAN.getLanguage();
-        TH_TH = new Locale("th", "").getLanguage();
-        FR = Locale.FRENCH.getLanguage();
-        ES = new Locale("es", "").getLanguage();
+        ZH = Locale.CHINA.getLanguage();
+        BN = new Locale("bn", "").getLanguage();
+
+
     }
 
     private void initTopbar() {
@@ -162,13 +158,13 @@ ContactsDetailDialogFragment.ContactsDetailCallback,LetterSortLayout.OnTouchingL
     private void sortContacts() {
         for (ContactsEntity contactsEntity : contactsNamesList) {
             String sortString = contactsEntity.getName().substring(0, 1).toUpperCase();
-            if (checkLanguage().equals(ZH_CN)) {
+            if (checkLanguage().equals(ZH)) {
                 sortContactsCN(contactsEntity, sortString);
             } else {
                 sortContactsEN(contactsEntity, sortString);
             }
         }
-        Collections.sort(contactsNamesList, new LetterComparator());
+        contactsNamesList.sort(new LetterComparator());
     }
 
     private String sortContactsCN(ContactsEntity contactsEntity, String sortString) {
@@ -218,6 +214,7 @@ ContactsDetailDialogFragment.ContactsDetailCallback,LetterSortLayout.OnTouchingL
         loadContacts();
         contactsAdapter.notifyDataSetChanged();
     }
+
     @Override
     public void updateContacts() {
         loadContacts();
@@ -237,17 +234,13 @@ ContactsDetailDialogFragment.ContactsDetailCallback,LetterSortLayout.OnTouchingL
             RecyclerView_contacts.getLayoutManager().scrollToPosition(position);
         }
     }
+
     /**
      * This code is from array
      * System = 0
      * English = 1
-     * 日本語 = 2
-     * 繁體中文 = 3
-     * 简体中文= 4
-     * 한국어 = 5
-     * ภาษาไทย = 6
-     * Français = 7
-     * Español = 8
+     * 中文 = 2
+     * Bangla = 3
      */
 
     private String checkLanguage() {
@@ -262,31 +255,33 @@ ContactsDetailDialogFragment.ContactsDetailCallback,LetterSortLayout.OnTouchingL
                 language = EN;
                 break;
             case 2:
-                // JAPANESE;
-                language = JA;
+                // CHINESE;
+                language = ZH;
                 break;
             case 3:
-                //TRADITIONAL_CHINESE;
-                language = ZH_TW;
-                break;
-            case 4:
-                // SIMPLIFIED_CHINESE;
-                language = ZH_CN;
-                break;
-            case 5:
-                // SIMPLIFIED_CHINESE;
-                language = KO;
-                break;
-            case 6:
-                language = TH_TH;
-                break;
-            case 7:
-                language = FR;
-                break;
-            case 8:
-                language = ES;
+                //BANGLA
+                language = BN;
                 break;
         }
         return language;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(updateBaseContextLocale(base));
+
+    }
+
+    private Context updateBaseContextLocale(Context context) {
+        Locale locale = MyDiaryApplication.mLocale;
+        Log.e("Mytest", "contacts mLocale:" + locale);
+        Locale.setDefault(locale);
+        Configuration configuration = context.getResources().getConfiguration();
+        configuration.setLocale(locale);
+        return context.createConfigurationContext(configuration);
+    }
+    private void setStatusBarBgColor(){
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        getWindow().setStatusBarColor(Color.WHITE);
     }
 }

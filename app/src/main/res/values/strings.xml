@@ -1,11 +1,13 @@
 <resources>
-    <string name="app_name">WeiDiary</string>
-    <string name="init_message">Welcome to beauty Weiwei\'s diary</string>
+    <string name="app_name">MyDiary</string>
+    <string name="init_message">Welcome to your diary</string>
     <!-- Profile -->
     <string name="profile_username_taki">Taki</string>
-    <string name="profile_username_mitsuha">Mitsuha</string>
+    <string name="profile_username_default">User</string>
+    <string name="profile_username_mitsuha">Mishuha</string>
     <string name="toast_change_theme">Theme is changing…</string>
-    <string name="your_name_is">Your name is</string>
+    <string name="emergency_contact">emergency</string>
+    <string name="your_name_is">User</string>
     <!-- Topic detail -->
     <string name="topic_detail_name">Topic name</string>
     <string name="topic_detail_text_color">Text color</string>
@@ -16,7 +18,7 @@
     <string name="topic_detail_current_bg">Topic background</string>
     <string name="topic_detail_default_bg">default background</string>
     <!-- Dialog  -->
-    <string name="dialog_button_ok">Ok</string>
+    <string name="dialog_button_ok">OK</string>
     <string name="dialog_button_call">Call</string>
     <string name="dialog_button_cancel">Cancel</string>
     <string name="dialog_button_delete">Delete</string>
@@ -53,8 +55,8 @@
     <string name="toast_space_insufficient">Free space insufficient</string>
     <string name="toast_diary_update_successful">Updating diary successful</string>
     <string name="toast_diary_update_fail">Updating diary fail</string>
-    <string name="toast_diary_insert_successful">Diary was inserted successfully</string>
-    <string name="toast_diary_insert_fail">Diary was inserted unsuccessfully…</string>
+    <string name="toast_diary_insert_successful">Diary saved</string>
+    <string name="toast_diary_insert_fail">Diary saving failed</string>
     <!-- Diary Viewer edit -->
     <string name="toast_diary_copy_to_edit_fail">Reading photo data fail…</string>
     <!-- Memo -->
@@ -85,7 +87,9 @@
     <string name="toast_save_profile_picture_fail">To save profile picture fail…</string>
     <string name="toast_crop_profile_picture_fail">To crop profile picture fail…</string>
     <string name="setting_system_title">System</string>
+    <string name="setting_system_note">Note</string>
     <string name="setting_system_fix_dir_hint">If your photo is gone after updating, click it to fix</string>
+    <string name="setting_system_note_content">You can change the theme and language here</string>
     <string name="setting_system_fix_dir_button">Fix photo</string>
     <string name="toast_setting_successful">Successful</string>
     <string name="toast_setting_wont_fix">You don\'t need to fix anything</string>
@@ -131,21 +135,20 @@
     <string name="oobe_main_your_name_title">Your name</string>
     <string name="oobe_main_your_name_content">You can set your personal information.</string>
     <string name="oobe_main_topic_list_title">Topic list</string>
-    <string name="oobe_main_topic_list_content">Your personal diary, memo or contacts!\nSwipe it to edit or delete.\n(The default Japanese data is from movie, you can delete it)</string>
+    <string name="oobe_main_topic_list_content">Your personal diary, memo or contacts!\nSwipe it to edit or delete.\n(The default  data are samples, you can delete it)</string>
     <string name="oobe_main_search_title">Search</string>
     <string name="oobe_main_search_content">You can search some topic.</string>
     <string name="oobe_main_adv_setting_title">Advanced setting.</string>
     <string name="oobe_main_adv_setting_content">Open the advanced settings.\nIncluding create topic, app setting, passcode, backup and about.</string>
-    <string name="oobe_main_mydiary_title">MyDiary</string>
-    <string name="oobe_main_mydiary_content">Either you\'ve seen the movie or not,\nI hope you\'ll enjoy this app.\nWrite the story of your name now!</string>
+    <string name="oobe_main_mydiary_title">Diary</string>
+    <string name="oobe_main_mydiary_content">I hope you\'ll enjoy this app.\nWrite the story of your life now!</string>
     <!-- Photo viewer -->
     <string name="photo_viewer_topic_fail">get diary fail</string>
     <string name="photo_viewer_photo_path_fail">get photo path fail</string>
     <string name="photo_viewer_no_images">No images</string>
     <!--Release Note-->
     <string name="release_note_title">Release note</string>
-    <string name="release_note">Version 1.0
-        take notes, record life
+    <string name="release_note">VERSION 1.0\nTake notes, record life
     </string>
     <string name="release_note_close_remind">Don\'t show again</string>
 </resources>

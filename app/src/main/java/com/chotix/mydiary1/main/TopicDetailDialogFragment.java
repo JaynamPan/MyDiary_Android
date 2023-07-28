@@ -6,12 +6,10 @@ import static com.chotix.mydiary1.shared.PermissionHelper.REQUEST_WRITE_ES_PERMI
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 
 import android.app.Dialog;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;

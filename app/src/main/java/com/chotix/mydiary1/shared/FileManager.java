@@ -13,6 +13,8 @@ import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.util.Log;
 
+import androidx.fragment.app.Fragment;
+
 import com.chotix.mydiary1.main.topic.ITopic;
 
 import org.apache.commons.io.FileUtils;
@@ -197,6 +199,7 @@ public class FileManager {
                 displayName = file.getName();
             }
         }
+        Log.e("Mytest","filemanager getfilenamebyuri displayname: "+displayName);
         return displayName;
     }
 
@@ -206,7 +209,21 @@ public class FileManager {
             intentImage.setType("image/*");
             intentImage.setAction(Intent.ACTION_GET_CONTENT);
             activity.startActivityForResult(Intent.createChooser(intentImage, "Select Picture"), requestCode);
+            Log.e("Mytest","Filemanager started to select pic,requestcode:"+requestCode);
         } catch (android.content.ActivityNotFoundException ex) {
+            Log.e("Mytest","Filemanager startbrowseimagefile failed");
+            Log.e(TAG, ex.toString());
+        }
+    }
+    public static void startBrowseImageFile(Fragment fragment, int requestCode) {
+        try {
+            Intent intentImage = new Intent();
+            intentImage.setType("image/*");
+            intentImage.setAction(Intent.ACTION_GET_CONTENT);
+            fragment.startActivityForResult(Intent.createChooser(intentImage, "Select Picture"), requestCode);
+            Log.e("Mytest","Filemanager started to select pic,requestcode:"+requestCode);
+        } catch (android.content.ActivityNotFoundException ex) {
+            Log.e("Mytest","Filemanager startbrowseimagefile failed");
             Log.e(TAG, ex.toString());
         }
     }
@@ -262,7 +279,7 @@ public class FileManager {
             else if (isDownloadsDocument(uri)) {
 
                 final String id = DocumentsContract.getDocumentId(uri);
-                final Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
+                final Uri contentUri = ContentUris.withAppendedId(Uri.parse("content://downloads/public_downloads"), Long.parseLong(id));
 
                 return getDataColumn(context, contentUri, null, null);
             }

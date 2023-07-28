@@ -10,7 +10,7 @@ public class Encryption {
             MessageDigest md = MessageDigest.getInstance(encryptionMethod);
             md.update(str.getBytes());
             byte byteData[] = md.digest();
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             for (byte aByteData : byteData) {
                 sb.append(Integer.toString((aByteData & 0xff) + 0x100, 16).substring(1));
             }
